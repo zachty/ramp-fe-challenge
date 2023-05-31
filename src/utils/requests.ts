@@ -40,6 +40,8 @@ export const getTransactionsPaginated = ({
 }
 
 export const getTransactionsByEmployee = ({ employeeId }: RequestByEmployeeParams) => {
+  //TODO: change so that this function works with an empty string. or change value of all_employees employee ID
+  //if changing all_employee selection employee ID make sure it works with filter below
   if (!employeeId) {
     throw new Error("Employee id cannot be empty")
   }

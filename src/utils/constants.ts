@@ -1,7 +1,7 @@
 import { Employee } from "./types"
 
 export const EMPTY_EMPLOYEE: Employee = {
-  id: "",
+  id: "0",
   firstName: "All",
   lastName: "Employees",
 }

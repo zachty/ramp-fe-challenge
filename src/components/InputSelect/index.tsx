@@ -4,6 +4,7 @@ import classNames from "classnames"
 import { DropdownPosition, GetDropdownPositionFn, InputSelectOnChange, InputSelectProps } from "./types"
 
 export function InputSelect<TItem>({
+  //TODO: WHERE IS ITEMS COMING FROM???
   label,
   defaultValue,
   onChange: consumerOnChange,
@@ -20,6 +21,7 @@ export function InputSelect<TItem>({
 
   const onChange = useCallback<InputSelectOnChange<TItem>>(
     (selectedItem) => {
+      //TODO: could be because empty string is null? causing unexpected behaviour here
       if (selectedItem === null) {
         return
       }
@@ -93,6 +95,7 @@ export function InputSelect<TItem>({
 
           return items.map((item, index) => {
             const parsedItem = parseItem(item)
+            //TODO: here is where the ID is, see where it goes
             return (
               <div
                 key={parsedItem.value}
