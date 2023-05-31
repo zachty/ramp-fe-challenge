@@ -46,7 +46,11 @@ export const getTransactionsByEmployee = ({ employeeId }: RequestByEmployeeParam
     throw new Error("Employee id cannot be empty")
   }
 
-  return data.transactions.filter((transaction) => transaction.employee.id === employeeId)
+  console.log(employeeId)
+
+  return data.transactions.filter(
+    (transaction) => transaction.employee.id === employeeId || employeeId === "0"
+  )
 }
 
 export const setTransactionApproval = ({ transactionId, value }: SetTransactionApprovalParams): void => {
