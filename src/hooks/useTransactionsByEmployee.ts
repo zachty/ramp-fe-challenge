@@ -25,7 +25,5 @@ export function useTransactionsByEmployee(): TransactionsByEmployeeResult {
     setTransactionsByEmployee(null)
   }, [])
 
-  console.log("inside useTransactionsByEmployee", transactionsByEmployee)
-
   return { data: transactionsByEmployee, loading, fetchById, invalidateData }
 }

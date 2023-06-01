@@ -40,17 +40,11 @@ export const getTransactionsPaginated = ({
 }
 
 export const getTransactionsByEmployee = ({ employeeId }: RequestByEmployeeParams) => {
-  //TODO: change so that this function works with an empty string. or change value of all_employees employee ID
-  //if changing all_employee selection employee ID make sure it works with filter below
   if (!employeeId) {
     throw new Error("Employee id cannot be empty")
   }
 
-  console.log(employeeId)
-
-  return data.transactions.filter(
-    (transaction) => transaction.employee.id === employeeId || employeeId === "0"
-  )
+  return data.transactions.filter((transaction) => transaction.employee.id === employeeId)
 }
 
 export const setTransactionApproval = ({ transactionId, value }: SetTransactionApprovalParams): void => {
