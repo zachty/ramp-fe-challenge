@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react"
+import { Fragment, useCallback, useEffect, useMemo } from "react"
 import { InputSelect } from "./components/InputSelect"
 import { Instructions } from "./components/Instructions"
 import { Transactions } from "./components/Transactions"
@@ -78,17 +78,18 @@ export function App() {
         <div className="RampGrid">
           <Transactions transactions={transactions} />
 
-          {transactions !== null && (
-            <button
-              className="RampButton"
-              disabled={paginatedTransactionsUtils.loading}
-              onClick={async () => {
-                await loadAllTransactions()
-              }}
-            >
-              View More
-            </button>
-          )}
+          {transactions !== null &&
+            paginatedTransactions?.nextPage != null && ( //use 'equality' over indentity op b/c '?.' -> undef
+              <button
+                className="RampButton"
+                disabled={paginatedTransactionsUtils.loading}
+                onClick={async () => {
+                  await loadAllTransactions()
+                }}
+              >
+                View More
+              </button>
+            )}
         </div>
       </main>
     </Fragment>
