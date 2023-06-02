@@ -13,6 +13,7 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked = false, dis
           "RampInputCheckbox--label-disabled": disabled,
         })}
       >
+        {/* gives warning for putting onChange in label so putting input inside the label seems like the easiest solution */}
         <input
           id={inputId}
           type="checkbox"
