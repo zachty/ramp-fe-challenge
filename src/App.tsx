@@ -12,7 +12,7 @@ export function App() {
   const { data: employees, ...employeeUtils } = useEmployees()
   const { data: paginatedTransactions, ...paginatedTransactionsUtils } = usePaginatedTransactions()
   const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } = useTransactionsByEmployee()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false) //stepping out of the useTransactionsByEmployee hook puts us on this line for some reason. It fires 7 times every time all employees is pressed
 
   const transactions = useMemo(
     () => paginatedTransactions?.data ?? transactionsByEmployee ?? null,
@@ -62,6 +62,13 @@ export function App() {
           })}
           onChange={async (newValue) => {
             if (newValue === null) {
+              return
+            }
+
+            //using this method allows us to capture an error if an employee without an id is somehow loaded in
+            //the old error message would still be thrown in the above case
+            if (newValue.firstName === "All" && newValue.lastName === "Employees") {
+              loadAllTransactions()
               return
             }
 
