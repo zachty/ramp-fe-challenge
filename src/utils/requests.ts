@@ -33,6 +33,7 @@ export const getTransactionsPaginated = ({
 
   const nextPage = end < data.transactions.length ? page + 1 : null
 
+  //slicing from 'start' deletes previous data, just go from beginning of array
   return {
     nextPage,
     data: data.transactions.slice(0, end),

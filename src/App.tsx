@@ -47,6 +47,7 @@ export function App() {
 
         <hr className="RampBreak--l" />
 
+        {/* loading state can be retrieved from useEmployees -> useCustomFetch -> useWrappedRequest */}
         <InputSelect<Employee>
           isLoading={employeeUtils.loading}
           defaultValue={EMPTY_EMPLOYEE}
@@ -79,7 +80,7 @@ export function App() {
           <Transactions transactions={transactions} />
 
           {transactions !== null &&
-            paginatedTransactions?.nextPage != null && ( //use 'equality' over indentity op b/c '?.' -> undef
+            paginatedTransactions?.nextPage != null && ( //use 'equality' over indentity operator b/c '?.' -> undef
               <button
                 className="RampButton"
                 disabled={paginatedTransactionsUtils.loading}
