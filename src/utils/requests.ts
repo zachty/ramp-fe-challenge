@@ -23,7 +23,7 @@ export const getTransactionsPaginated = ({
   if (page === null) {
     throw new Error("Page cannot be null")
   }
-
+  //TODO: fix bug 5 from here (would be better to abstract it from app and would probably be faster than reorganizing the data on front end)
   const start = page * TRANSACTIONS_PER_PAGE
   const end = start + TRANSACTIONS_PER_PAGE
 
@@ -32,7 +32,7 @@ export const getTransactionsPaginated = ({
   }
 
   const nextPage = end < data.transactions.length ? page + 1 : null
-
+  //nextPage is set here. when it is null 'view more' should be hidden
   return {
     nextPage,
     data: data.transactions.slice(start, end),
