@@ -12,7 +12,7 @@ export function App() {
   const { data: employees, ...employeeUtils } = useEmployees()
   const { data: paginatedTransactions, ...paginatedTransactionsUtils } = usePaginatedTransactions()
   const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } = useTransactionsByEmployee()
-  const [isLoading, setIsLoading] = useState(false) //stepping out of the useTransactionsByEmployee hook puts us on this line for some reason. It fires 7 times every time all employees is pressed
+  //const [isLoading, setIsLoading] = useState(false) //stepping out of the useTransactionsByEmployee hook puts us on this line for some reason. It fires 7 times every time all employees is pressed (from bug #3)
 
   const transactions = useMemo(
     () => paginatedTransactions?.data ?? transactionsByEmployee ?? null,
